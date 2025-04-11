@@ -479,3 +479,9 @@ nav .fa-solid{
         height: auto;
     }
 }
+
+#msg {
+    color: #b54769;
+    margin-top: -40px;
+    display: block;
+}
