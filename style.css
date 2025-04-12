@@ -394,7 +394,10 @@ form .btn2{
     font-size: 18px;
     margin-top: 20px;
     cursor: pointer;
+}
 
+form .btn2:hover{
+    font-size: 20px ;
 }
 
 .copyright{
