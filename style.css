@@ -77,6 +77,10 @@ nav ul li a:hover::after{
 
 span{
     color: brown;
+}
+
+.header-text h1 span{
+    color: brown;
     vertical-align: bottom;
     font-family: monospace;
     overflow: hidden;
