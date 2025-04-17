@@ -199,6 +199,10 @@ span{
     font-size: 13px;
     font-weight: 300;
     border-radius: 10px;
+    border: 2px solid transparent;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     transition: background 0.5s, transform 0.5s;
 }
 
@@ -227,6 +231,42 @@ span{
     transform: translate(-10px);
 }
 
+.services-list div{
+    border-radius: 10px;
+    position: relative;
+    
+}
+
+.services-list div::before,.services-list div::after{
+    content: "";
+    position: absolute;
+    background: whitesmoke;
+    transition: all 0.5s ease;
+}
+
+.services-list div::before{
+    height: 2px;
+    width: 0;
+    top: 0;
+    left: 0;
+}
+
+.services-list::after{
+    width: 2px;
+    height: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.services-list div:hover::before{
+    width: 100%;
+}
+
+.services-list div:hover::after{
+    height: 100%;
+}
+
+
 /* portfolio */
 
 #portfolio{
@@ -241,12 +281,6 @@ span{
     margin-top: 50px;
 }
 
-.work{
-    border-radius: 10px;
-    position: relative;
-    overflow: hidden;
-}
-
 .work img{
     width: 100%;
     border-radius: 10px;
@@ -255,9 +289,10 @@ span{
     background-size: cover;
 }
 
-.work:hover img{
-    transform: scale(1.1);
-}
+
+
+
+
 
 .layer{
     width: 100%;
@@ -300,21 +335,7 @@ span{
     height: 100%;
 }
 
-.btn{
-    display: block;
-    margin: 50px auto;
-    width: fit-content;
-    border: 1px solid brown;
-    padding: 14px 50px;
-    border-radius: 6px;
-    text-decoration: none;
-    color: #ffffff;
-    transition: background 0.5s;
-}
 
-.btn:hover{
-    background: brown;
-}
 
 .hidden {
     display: none;
@@ -334,6 +355,10 @@ span{
     flex-basis: 35%;
 }
 
+.contact-left a{
+    margin-left: 6px;
+}
+
 .contact-right{
     margin-top: 110px;
     flex-basis: 60%;
@@ -344,33 +369,149 @@ span{
 }
 
 .contact-left p i{
-    color: brown;
+    color: white;
     margin-right: 15px;
     font-size: 25px;
 }
 
-.social-icons{
-    margin-top: 30%;
-}
 
-.social-icons a{
-    text-decoration: none;
+
+.contact-left p i:hover{
     font-size: 30px;
-    margin-right: 15px;
-    color: #ababab;
-    display: inline-block;
-    transition: transform 0.5s;
+    background: linear-gradient(135deg, brown 50%, white);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+      }
+
+.social-links{
+    margin-top: 35px;
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    flex-wrap: wrap;
+    }
+
+.social-links a {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    color: var(--secondary);
+    font-size: 20px;
+    transition: var(--transition);
+    position: relative;
 }
 
-.social-icons a:hover{
-    color: brown;
-    transform: scale(1.1)
+.social-links a:hover {
+    transform: translateY(-5px);
+    background: white;
+    color: var(--primary);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
-.btn.btn2{
-    display: inline-block;
-    background: brown;
+.social-links a:hover::after {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
 }
+
+.social-links a::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-10px);
+    width: max-content;
+    padding: 6px 12px;
+    background: var(--secondary);
+    color: white;
+    font-size: 12px;
+    font-weight: 500;
+    border-radius: 6px;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+    pointer-events: none;
+}
+
+.social-links a.linkedin:hover {
+    background:linear-gradient(135deg,rgb(10, 104, 155) 50%,white 99%);
+    color: white;
+}
+
+.social-links a.github:hover {
+    background: #550c65;
+    color: white;
+}
+
+.social-links a.portfolio:hover {
+    background: linear-gradient(135deg,brown,black);
+    color: white;
+}
+
+.social-links a.instagram:hover {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    color: white;
+}
+
+
+
+
+
+.btn{
+ 
+    display: flex;
+    margin: 50px auto;
+    align-items: center;
+    width: fit-content;
+    padding: 14px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--secondary);
+    font-size: 20px;
+    transition: var(--transition);
+    position: relative;
+
+}
+
+
+
+.btn::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-10px);
+    width: max-content;
+    padding: 6px 12px;
+    background: var(--secondary);
+    color: white;
+    font-size: 12px;
+    font-weight: 500;
+    border-radius: 6px;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+    pointer-events: none;
+}
+
+.btn:hover {
+    transform: translateY(-5px);
+    background: linear-gradient(135deg,brown,black);
+    border-radius: 8px;
+    position: relative;
+    color: white;
+    box-shadow: 0 0 10px rgb(125, 27, 27);
+}
+
+
+
 
 .contatct-right form{
     width: 100%;
@@ -388,17 +529,7 @@ form input, form textarea{
     border-radius: 6px;
 }
 
-form .btn2{
 
-    padding: 14px 60px;
-    font-size: 18px;
-    margin-top: 20px;
-    cursor: pointer;
-}
-
-form .btn2:hover{
-    font-size: 20px ;
-}
 
 .copyright{
     width: 100%;
